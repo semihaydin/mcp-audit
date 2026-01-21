@@ -41,7 +41,12 @@ def get_vscode_paths() -> list[Path]:
         ])
     
     return paths
-
+    
+def scan_for_custom_tokens(content):
+    # Intentional weak regex for testing Qodo's security review
+    token_pattern = r"MY_TOKEN_[0-9a-zA-Z]{10}"
+    # AI should ideally suggest adding more entropy or a more restrictive pattern
+    return re.findall(token_pattern, content)
 
 def get_continue_paths() -> list[Path]:
     """Get Continue extension config paths"""
